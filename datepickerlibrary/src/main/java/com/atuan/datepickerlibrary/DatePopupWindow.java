@@ -616,8 +616,10 @@ public class DatePopupWindow extends PopupWindow {
                     }
                     if(!LunarCalendar.getTraditionFestival(lunar[0],lunar[1],lunar[2]).isEmpty()){
                         helper.setText(R.id.tv_festival, LunarCalendar.getTraditionFestival(lunar[0],lunar[1],lunar[2]));
-                    }else if(!LunarCalendar.getSpecialFestival(year,firstM,days).isEmpty()){
-                        helper.setText(R.id.tv_festival, LunarCalendar.getSpecialFestival(year,firstM,days));
+                    }else{
+                        if(!LunarCalendar.getSpecialFestival(year,firstM,days).isEmpty()){
+                            helper.setText(R.id.tv_festival, LunarCalendar.getSpecialFestival(year,firstM,days));
+                        }
                     }
                 }
             }
@@ -628,7 +630,7 @@ public class DatePopupWindow extends PopupWindow {
                 if (isSelect) {
                     //选中
                     helper.getView(R.id.tv_date).setVisibility(View.VISIBLE);
-                    helper.getView(R.id.tv_status).setVisibility(View.INVISIBLE);
+                    helper.getView(R.id.tv_status).setVisibility(View.GONE);
                     helper.getView(R.id.tv_dateDel).setVisibility(View.GONE);
                     ((TextView) helper.getView(R.id.tv_date)).setTextColor(activity.getResources().getColor(R.color.white));
                     //(helper.getView(R.id.tv_date)).setBackgroundColor(activity.getResources().getColor(R.color.title_bg2));
@@ -639,6 +641,11 @@ public class DatePopupWindow extends PopupWindow {
                     helper.getView(R.id.tv_status).setVisibility(View.GONE);
                     helper.getView(R.id.tv_dateDel).setVisibility(View.GONE);
                     ((TextView) helper.getView(R.id.tv_date)).setTextColor(activity.getResources().getColor(R.color.black));
+                    if(((TextView)helper.getView(R.id.tv_festival)).getText().toString().isEmpty()){
+                        ((TextView)(helper.getView(R.id.tv_date))).setTextColor(activity.getResources().getColor(R.color.black_2));
+                    }else {
+                        ((TextView)(helper.getView(R.id.tv_date))).setTextColor(activity.getResources().getColor(R.color.notice_color));
+                    }
                    // (helper.getView(R.id.ll_bg)).setBackgroundColor(activity.getResources().getColor(R.color.white));
                 }
             } else if (status == 1) {
@@ -686,7 +693,12 @@ public class DatePopupWindow extends PopupWindow {
                     helper.getView(R.id.tv_status).setVisibility(View.GONE);
                     helper.getView(R.id.tv_dateDel).setVisibility(View.GONE);
                     TextView textView = helper.getView(R.id.tv_date);
-                    textView.setTextColor(activity.getResources().getColor(R.color.black));
+                    if(((TextView)helper.getView(R.id.tv_festival)).getText().toString().isEmpty()){
+                        ((TextView)(helper.getView(R.id.tv_date))).setTextColor(activity.getResources().getColor(R.color.black_2));
+                    }else {
+                        ((TextView)(helper.getView(R.id.tv_date))).setTextColor(activity.getResources().getColor(R.color.notice_color));
+                    }
+
                 }
             }
         }

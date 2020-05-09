@@ -28,6 +28,7 @@
     <color name="province_line_border">#D0D0D0</color>
     <color name="scan_corner_color">#0effc2</color>
     <color name="black_1">#000</color>
+    <color name="black_2">#181818</color>
     <color name="pickerview_bg_topbar">#f5f5f5</color>
     <color name="amount_selected">#f3f2f4</color>
     <color name="search_text_color">#b9b5b5</color>
