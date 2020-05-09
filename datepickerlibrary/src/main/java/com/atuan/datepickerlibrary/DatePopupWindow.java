@@ -636,7 +636,7 @@ public class DatePopupWindow extends PopupWindow {
                 } else {
                     //没选中状态
                     helper.getView(R.id.tv_date).setVisibility(View.VISIBLE);
-                    helper.getView(R.id.tv_status).setVisibility(View.INVISIBLE);
+                    helper.getView(R.id.tv_status).setVisibility(View.GONE);
                     helper.getView(R.id.tv_dateDel).setVisibility(View.GONE);
                     ((TextView) helper.getView(R.id.tv_date)).setTextColor(activity.getResources().getColor(R.color.black));
                    // (helper.getView(R.id.ll_bg)).setBackgroundColor(activity.getResources().getColor(R.color.white));
