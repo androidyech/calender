@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -118,17 +119,24 @@ public class DatePopupWindow extends PopupWindow {
             @Override
             public void onClick(View v) {
                 if (mOnClickListener != null) {
-                    String startDate = mList.get(startGroupPosition)
-                            .getList()
-                            .get(startChildPosition)
-                            .getDate();
-                    String endDate = mList.get(endGroupPosition)
-                            .getList()
-                            .get(endChildPosition)
-                            .getDate();
-                    mOnClickListener.getDate(startDate, endDate, startGroupPosition, startChildPosition, endGroupPosition, endChildPosition);
+                    int days = Integer.parseInt(tvTime.getText().toString().replace("晚",""));
+                    if(days<=30){
+                        String startDate = mList.get(startGroupPosition)
+                                .getList()
+                                .get(startChildPosition)
+                                .getDate();
+                        String endDate = mList.get(endGroupPosition)
+                                .getList()
+                                .get(endChildPosition)
+                                .getDate();
+                        mOnClickListener.getDate(startDate, endDate, startGroupPosition, startChildPosition, endGroupPosition, endChildPosition);
+                        DatePopupWindow.this.dismiss();
+                    }else {
+                        Toast.makeText(activity,"日期间隔不能超过30晚",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
-                DatePopupWindow.this.dismiss();
+
             }
         });
         btnClose.setOnClickListener(new View.OnClickListener() {
